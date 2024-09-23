@@ -6,7 +6,11 @@ import { LitElement, html, css } from 'lit';
  * 2. Get your CSS rescoped as needed to work here
  */
 
+
+
 export class MyCard extends LitElement {
+
+  
 
   static get tag() {
     return 'my-card';
@@ -14,9 +18,40 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "My card";
+    this.title = " ";
+    this.imageUrl = " ";
+    this.text = " ";
+    this.button = " "
   }
 
+  static styles = css`
+    .card {
+    width: 400px;
+    border-radius: 5px;
+    border: 8px solid black;
+    background-color: grey;
+    text-align: center;
+    padding: 8px 16px;
+    margin: 16px;
+    }
+
+    img{
+    width: 400px;
+    height: auto;
+    padding: 8px;  
+    }
+
+    #details
+    {
+      background-color: pink;
+      color: green;
+      border-color: white;
+      border-radius: 24px;
+      font-size: 50px;
+      padding: 8px;
+      margin: 10% 25%;
+      `;
+  
   static get styles() {
     return css`
       :host {
@@ -26,12 +61,23 @@ export class MyCard extends LitElement {
   }
 
   render() {
-    return html`<div>${this.title}</div>`;
+    return html`
+  <div class="card">
+   <img src="${this.imageUrl}" >
+    <h1 class="card-title">${this.title}</h1> 
+    <p class ="card-text">${this.text}</p> 
+    <button id="details">${this.button}</button>
+  </div>`;
+  
   }
 
   static get properties() {
     return {
       title: { type: String },
+      button: { type: String },
+      imageUrl: {type: String},
+      text: {type: String},
+     
     };
   }
 }

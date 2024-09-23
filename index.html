@@ -26,13 +26,41 @@
 <body>
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
-  <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
-  <polaris-chip title="Faculty and Staff"></polaris-chip>
+  <polaris-chip title="News of Record" link="https://psu.edu/" shiny></polaris-chip>
+  <polaris-chip title="Faculty and Staff" link="https://hax.psu.edu"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
+ 
 
-  <h1>my-card</h1>
-  <my-card></my-card>
+  <h1>My Cards</h1>
+  <div id = "my-cards">
+    <my-card title = "Man Eats 100 Burgers in just 10 Minutes!" 
+    imageUrl = "https://thumbs.dreamstime.com/b/handsome-man-eating-tasty-burger-isolated-white-141601186.jpg" 
+    text = "It's unbelievable! This guy just ate 100 burgers at Chubbz restaurant in Detriot, MI. Everyone told him it was impossible but he trained for months and actually did it! According to Adam Shefter, Joey Chestnut reached out to compete with this guy on Netflix in a burger eating competiton."
+    button ="Details"> </my-card>
+
+    <my-card title = "Cool Dog" 
+    imageUrl = "https://cdn.wallpapersafari.com/80/43/NHMnse.jpg" 
+    text = "Check out this dog that I found pretty cool"
+    button ="Details"> </my-card>
+
+    <my-card title = "1990 Supra Mark iii" 
+    imageUrl = "https://i.ytimg.com/vi/2XYo8Tudrhg/maxresdefault.jpg" 
+    text = "I want this car so bad. Check out how sweet this ride is. I would name this car Jenny. "
+    button ="Details"> </my-card>
+
+    <my-card title = "The Last Time the Jets Won the Superbowl" 
+    imageUrl = "https://www.nj.com/resizer/_Tq0bv1oOxf977zgDGE32v483BM=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/expo.advance.net/img/7ff92b3f6a/width2048/8f1_jetssuperbowlnfl15.jpeg" 
+    text = "Its been 55 years since the New York Jets have won a superbowl. I hope we go this year with Aaron Rodgers.  "
+    button ="Details"> </my-card>
+
+    <my-card title = "Two Medicine Campsite" 
+    imageUrl = "https://static.seeker.io/media/img/1/e3751e20-34ba-4236-ac10-b436bfafc7f3-1400.jpg"
+    text = "This is two medicine campsite in Glacier National Park in Montana. It's beautiful and home to many hikes and wildlife."
+    button ="Details"> </my-card>
+
+  </div>
+
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
