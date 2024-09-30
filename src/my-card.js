@@ -69,9 +69,6 @@ export class MyCard extends LitElement {
     `;
    }
 
-
-
-
   openChanged(e) {
     console.log(e.newState);
     if (e.newState === "open") {
@@ -96,7 +93,6 @@ export class MyCard extends LitElement {
     <button id="details">${this.button}</button>
   </div>
   `;
-  
   }
 
   static get properties() {
@@ -109,8 +105,6 @@ export class MyCard extends LitElement {
      
     };
   }
-
-
 }
 
 globalThis.customElements.define(MyCard.tag, MyCard);
