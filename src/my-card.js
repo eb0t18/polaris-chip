@@ -6,12 +6,8 @@ import { LitElement, html, css } from 'lit';
  * 2. Get your CSS rescoped as needed to work here
  */
 
-
-
 export class MyCard extends LitElement {
-
   
-
   static get tag() {
     return 'my-card';
   }
@@ -22,10 +18,26 @@ export class MyCard extends LitElement {
     this.imageUrl = " ";
     this.text = " ";
     this.button = " "
+    this.fancy = false;
   }
 
-  static styles = css`
-    .card {
+
+  static get styles() 
+  {
+    return css`
+      :host {
+        display:
+        block;
+      }
+
+      :host([fancy]) {
+      display: block;
+      background-color: pink;
+      border: 2px solid fuchsia;
+      box-shadow: 10px 5px 5px red;
+      }
+
+      .card {
     width: 400px;
     border-radius: 5px;
     border: 8px solid black;
@@ -34,6 +46,7 @@ export class MyCard extends LitElement {
     padding: 8px 16px;
     margin: 16px;
     }
+  
 
     img{
     width: 400px;
@@ -50,24 +63,39 @@ export class MyCard extends LitElement {
       font-size: 50px;
       padding: 8px;
       margin: 10% 25%;
-      `;
-  
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-      }
+    }
+
+      
     `;
+   }
+
+
+
+
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
   }
 
   render() {
-    return html`
+    return html` 
   <div class="card">
    <img src="${this.imageUrl}" >
     <h1 class="card-title">${this.title}</h1> 
-    <p class ="card-text">${this.text}</p> 
+    <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+      <summary>Description</summary>
+    <div>
+      <slot>${this.text}</slot>
+    </div>
+  </details>
     <button id="details">${this.button}</button>
-  </div>`;
+  </div>
+  `;
   
   }
 
@@ -77,9 +105,13 @@ export class MyCard extends LitElement {
       button: { type: String },
       imageUrl: {type: String},
       text: {type: String},
+      fancy: { type: Boolean, reflect: true },
      
     };
   }
+
+
 }
 
 globalThis.customElements.define(MyCard.tag, MyCard);
+

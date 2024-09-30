@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Boilerplate for polaris chip">
   <base href="/">
+  <script type="module" src="my-card.js"></script>
 
   <style>
     :root,
@@ -33,33 +34,90 @@
  
 
   <h1>My Cards</h1>
-  <div id = "my-cards">
-    <my-card title = "Man Eats 100 Burgers in just 10 Minutes!" 
+
+  <div id="buttons">
+    <button id="duplicate" cloneCard>Clone Card</button>
+    <button id="bg-change">Change background</button>
+    <button id="change-title">Change title</button>
+    <button id="change-image">Change image</button>
+    <button id="delete-card">Delete card</button>
+    </div>
+ 
+  
+
+    <div id = "my-cards">
+    <my-card id ='this' title = "Man Eats 100 Burgers in just 10 Minutes!" 
     imageUrl = "https://thumbs.dreamstime.com/b/handsome-man-eating-tasty-burger-isolated-white-141601186.jpg" 
     text = "It's unbelievable! This guy just ate 100 burgers at Chubbz restaurant in Detriot, MI. Everyone told him it was impossible but he trained for months and actually did it! According to Adam Shefter, Joey Chestnut reached out to compete with this guy on Netflix in a burger eating competiton."
-    button ="Details"> </my-card>
+    button ="Details"></my-card>
 
-    <my-card title = "Cool Dog" 
+    
+   <my-card title = "Cool Dog" 
     imageUrl = "https://cdn.wallpapersafari.com/80/43/NHMnse.jpg" 
     text = "Check out this dog that I found pretty cool"
-    button ="Details"> </my-card>
+    button ="Details"></my-card>
 
     <my-card title = "1990 Supra Mark iii" 
     imageUrl = "https://i.ytimg.com/vi/2XYo8Tudrhg/maxresdefault.jpg" 
     text = "I want this car so bad. Check out how sweet this ride is. I would name this car Jenny. "
-    button ="Details"> </my-card>
+    button ="Details"></my-card>
 
     <my-card title = "The Last Time the Jets Won the Superbowl" 
     imageUrl = "https://www.nj.com/resizer/_Tq0bv1oOxf977zgDGE32v483BM=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/expo.advance.net/img/7ff92b3f6a/width2048/8f1_jetssuperbowlnfl15.jpeg" 
     text = "Its been 55 years since the New York Jets have won a superbowl. I hope we go this year with Aaron Rodgers.  "
-    button ="Details"> </my-card>
+    button ="Details"></my-card>
 
     <my-card title = "Two Medicine Campsite" 
     imageUrl = "https://static.seeker.io/media/img/1/e3751e20-34ba-4236-ac10-b436bfafc7f3-1400.jpg"
     text = "This is two medicine campsite in Glacier National Park in Montana. It's beautiful and home to many hikes and wildlife."
-    button ="Details"> </my-card>
+    button ="Details"></my-card>
+
+
 
   </div>
+  
+  <script>
+    
+      const cardContainer = document.getElementById('my-cards');
+      document.getElementById('duplicate').addEventListener('click', () => {
+      const clonedCard = cardContainer.querySelector('my-card').cloneNode(true);   
+      cardContainer.appendChild(clonedCard);
+    });
+
+
+      document.getElementById('delete-card').addEventListener('click', () => {
+        if(document.querySelectorAll('my-card').length>1){
+        document.querySelector('my-card:last-child').remove();  
+        }
+
+    });
+
+    const myCard = cardContainer.querySelector('my-card');
+   
+    document.getElementById('bg-change').addEventListener('click', () => {
+        if (myCard) {
+        myCard.shadowRoot.querySelector('.card').style.backgroundColor = 'blue';
+        }
+        }
+    );
+
+    document.getElementById('change-title').addEventListener('click', () => {
+        if (myCard) {
+        myCard.shadowRoot.querySelector('h1').textContent = 'Man Throws Up From Eating Too Many Burgers';
+        }
+        }
+    );
+
+    document.getElementById('change-image').addEventListener('click', () => {
+        if (myCard) {
+        myCard.shadowRoot.querySelector('img').src = 'https://st.depositphotos.com/1155356/1861/i/450/depositphotos_18616961-stock-photo-man-throwing-up-in-bathroom.jpg';
+        }
+        }
+    );
+
+
+  </script>
+
 
 
   <!-- this is what is bringing in the definition for this tag -->
